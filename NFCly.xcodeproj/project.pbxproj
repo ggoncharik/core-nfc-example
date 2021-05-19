@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57596539052CD2B584664F7D /* Pods_NFCly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EB6ED30D8D5160F4C3323D /* Pods_NFCly.framework */; };
 		D7FA8BBF265515E200C791E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA8BBE265515E200C791E6 /* AppDelegate.swift */; };
 		D7FA8BC1265515E200C791E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA8BC0265515E200C791E6 /* SceneDelegate.swift */; };
 		D7FA8BC3265515E200C791E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA8BC2265515E200C791E6 /* ContentView.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03AFDCDBA3C864E20AA04BB9 /* Pods-NFCly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NFCly.debug.xcconfig"; path = "Target Support Files/Pods-NFCly/Pods-NFCly.debug.xcconfig"; sourceTree = "<group>"; };
+		0C26EC8401EA958DE3D69C35 /* Pods-NFCly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NFCly.release.xcconfig"; path = "Target Support Files/Pods-NFCly/Pods-NFCly.release.xcconfig"; sourceTree = "<group>"; };
+		A6EB6ED30D8D5160F4C3323D /* Pods_NFCly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NFCly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7FA8BBB265515E200C791E6 /* NFCly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFCly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7FA8BBE265515E200C791E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7FA8BC0265515E200C791E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57596539052CD2B584664F7D /* Pods_NFCly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36740E1B76C42D43D6D37BF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03AFDCDBA3C864E20AA04BB9 /* Pods-NFCly.debug.xcconfig */,
+				0C26EC8401EA958DE3D69C35 /* Pods-NFCly.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D7FA8BB2265515E100C791E6 = {
 			isa = PBXGroup;
 			children = (
 				D7FA8BBD265515E200C791E6 /* NFCly */,
 				D7FA8BBC265515E200C791E6 /* Products */,
+				36740E1B76C42D43D6D37BF9 /* Pods */,
+				DC490F23B620A10786DE843B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +92,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DC490F23B620A10786DE843B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6EB6ED30D8D5160F4C3323D /* Pods_NFCly.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,6 +107,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7FA8BCF265515E500C791E6 /* Build configuration list for PBXNativeTarget "NFCly" */;
 			buildPhases = (
+				402AC25D8B2EFFF9777C9DCF /* [CP] Check Pods Manifest.lock */,
 				D7FA8BB7265515E100C791E6 /* Sources */,
 				D7FA8BB8265515E100C791E6 /* Frameworks */,
 				D7FA8BB9265515E100C791E6 /* Resources */,
@@ -139,6 +165,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		402AC25D8B2EFFF9777C9DCF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NFCly-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D7FA8BB7265515E100C791E6 /* Sources */ = {
@@ -283,6 +334,7 @@
 		};
 		D7FA8BD0265515E500C791E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03AFDCDBA3C864E20AA04BB9 /* Pods-NFCly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -303,6 +355,7 @@
 		};
 		D7FA8BD1265515E500C791E6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C26EC8401EA958DE3D69C35 /* Pods-NFCly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
