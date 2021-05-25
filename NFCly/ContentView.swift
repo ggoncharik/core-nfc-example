@@ -1,21 +1,50 @@
-//
-//  ContentView.swift
-//  NFCly
-//
-//  Created by Goncharik, Georgy on 19.05.21.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    private let writer = NFCWriter()
+    private let reader = NFCReader()
+    
+    @State private var data: [String] = []
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            if !data.isEmpty {
+                List(data, id: \.self) { payload in
+                    Text(payload)
+                        .font(.headline)
+                }
+            } else {
+                Spacer()
+            }
+            HStack {
+                Button("Read", action: readMsg)
+                Button("Write", action: writeIG)
+            }.padding()
+        }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    private func writeIG() {
+        let encoder = MessageEncoder()
+        let name = "Georgei Goncharik"
+        guard let url = URL(string: "instagram://user?username=g0shka69") else {
+            print("error")
+            return
+        }
+        guard let message = encoder.message(payloads: encoder.payloads(from: [name]),
+                                            encoder.payloads(from: [url]))
+        else {
+            return
+        }
+        writer.startSession(with: message)
+    }
+    
+    private func readMsg() {
+        self.data = []
+        reader.startSession(onSuccess:{ message in
+            let decoder = MessageDecoder()
+            DispatchQueue.main.async {
+                self.data = decoder.decode(message)
+            }
+        })
     }
 }
